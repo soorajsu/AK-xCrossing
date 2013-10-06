@@ -9,13 +9,14 @@ restore='\033[0m'
 clear
 
 # AK Kernel Version
-BASE_AK_VER="AK.NEO"
-VER=".0x038.JS"
+BASE_AK_VER="AK."
+VER=".0x001"
 AK_VER=$BASE_AK_VER$VER
 
 # AK Variables
 export LOCALVERSION="~"`echo $AK_VER`
-export CROSS_COMPILE=${HOME}/android/AK-linaro/4.8.2-2013.09.20130923/bin/arm-linux-gnueabihf-
+#export CROSS_COMPILE=${HOME}/android/AK-linaro/4.8.2-2013.09.20130923/bin/arm-linux-gnueabihf-
+export CROSS_COMPILE=${HOME}/android/AK-linaro/4.7.3-2013.04.20130415/bin/arm-linux-gnueabihf-
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER=ak
@@ -45,7 +46,7 @@ MODULES_DIR=${HOME}/android/AK-anykernel/cwm/system/lib/modules
 KERNEL_DIR=`pwd`
 OUTPUT_DIR=${HOME}/android/AK-anykernel/zip
 CWM_DIR=${HOME}/android/AK-anykernel/cwm
-ZIMAGE_DIR=${HOME}/android/AK-neo-revolution/arch/arm/boot
+ZIMAGE_DIR=${HOME}/android/AK-makox/arch/arm/boot
 CWM_MOVE=/home/anarkia1976/Desktop/AK-Kernel
 ZIMAGE_ANYKERNEL=${HOME}/android/AK-anykernel/cwm/kernel
 ANYKERNEL_DIR=${HOME}/android/AK-anykernel
@@ -68,7 +69,7 @@ echo "Making: AK Mako Defconfig"
 echo "-------------------------"
 echo -e "${restore}"
 
-make "mako_defconfig"
+make "cyanogen_mako_defconfig"
 #make -j3 > /dev/null
 make -j3
 
