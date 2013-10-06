@@ -10,7 +10,7 @@ clear
 
 # AK Kernel Version
 BASE_AK_VER="AK."
-VER=".0x002"
+VER=".0x003"
 AK_VER=$BASE_AK_VER$VER
 
 # AK Variables
@@ -46,7 +46,7 @@ MODULES_DIR=${HOME}/android/AK-anykernel/cwm/system/lib/modules
 KERNEL_DIR=`pwd`
 OUTPUT_DIR=${HOME}/android/AK-anykernel/zip
 CWM_DIR=${HOME}/android/AK-anykernel/cwm
-ZIMAGE_DIR=${HOME}/android/AK-makox/arch/arm/boot
+ZIMAGE_DIR=${HOME}/android/AK-xCrossing/arch/arm/boot
 CWM_MOVE=/home/anarkia1976/Desktop/AK-Kernel
 ZIMAGE_ANYKERNEL=${HOME}/android/AK-anykernel/cwm/kernel
 ANYKERNEL_DIR=${HOME}/android/AK-anykernel
