@@ -9,8 +9,8 @@ restore='\033[0m'
 clear
 
 # AK Kernel Version
-BASE_AK_VER="AK."
-VER=".0x005"
+BASE_AK_VER="AK"
+VER=".018"
 AK_VER=$BASE_AK_VER$VER
 
 # AK Variables
