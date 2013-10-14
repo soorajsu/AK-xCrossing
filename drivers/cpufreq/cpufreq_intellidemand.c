@@ -44,12 +44,12 @@
  */
 
 #define DEF_FREQUENCY_DOWN_DIFFERENTIAL		(10)
-#define DEF_FREQUENCY_UP_THRESHOLD		(75)
+#define DEF_FREQUENCY_UP_THRESHOLD		(90)
 #define DEF_SAMPLING_DOWN_FACTOR		(1)
 #define BOOSTED_SAMPLING_DOWN_FACTOR		(10)
 #define MAX_SAMPLING_DOWN_FACTOR		(100000)
 #define MICRO_FREQUENCY_DOWN_DIFFERENTIAL	(3)
-#define MICRO_FREQUENCY_UP_THRESHOLD		(75)
+#define MICRO_FREQUENCY_UP_THRESHOLD		(90)
 #define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(15000)
 #define MIN_FREQUENCY_UP_THRESHOLD		(11)
 #define MAX_FREQUENCY_UP_THRESHOLD		(100)
@@ -190,7 +190,7 @@ static struct dbs_tuners {
 	.sync_freq = DBS_SYNC_FREQ,
 	.optimal_freq = DBS_OPTIMAL_FREQ,
 	.freq_boost_time = DEFAULT_FREQ_BOOST_TIME,
-	.two_phase_freq = 0,
+	.two_phase_freq = 1350000,
 };
 
 static inline cputime64_t get_cpu_idle_time_jiffy(unsigned int cpu,
