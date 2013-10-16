@@ -257,7 +257,7 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 		},
 	},
 	.init_level = 1,
-	.num_levels = 7,
+	.num_levels = KGSL_MAX_PWRLEVELS,
 	.set_grp_async = NULL,
 	.idle_timeout = HZ/10,
 	.nap_allowed = true,
