@@ -1659,6 +1659,12 @@ config GPU_OVERCLOCK_450
         help
           APQ8064 GPU overclocking to 450
 
+config CPU_OVERCLOCK
+	bool "Enable CPU Overclocking option"
+	default n
+	help
+	  Krait overclocking up to 1.9 GHz
+
 config USERSPACE_VOLTAGE_CONTROL
         bool "Enable Userspace CPU Voltage Control"
         default n
