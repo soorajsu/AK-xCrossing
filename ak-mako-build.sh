@@ -10,7 +10,7 @@ clear
 
 # AK Kernel Version
 BASE_AK_VER="AK"
-VER=".055.xCrossed"
+VER=".056.jw.xCrossed"
 AK_VER=$BASE_AK_VER$VER
 
 # AK Variables
