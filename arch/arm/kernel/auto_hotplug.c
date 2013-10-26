@@ -162,6 +162,7 @@ static void auto_hotplug_late_resume(struct early_suspend *handler)
 	policy->min = scaling_save_min;
 	policy->max = scaling_save_max;
 	cpufreq_cpu_put(policy);
+	msm_cpufreq_set_freq_limits(0, MSM_CPUFREQ_NO_LIMIT, MSM_CPUFREQ_NO_LIMIT);
 #endif
 
 #if DEBUG
@@ -178,6 +179,7 @@ static void auto_hotplug_late_resume(struct early_suspend *handler)
 static struct early_suspend auto_hotplug_suspend = {
 	.suspend = auto_hotplug_early_suspend,
 	.resume = auto_hotplug_late_resume,
+	.level = EARLY_SUSPEND_LEVEL_BLANK_SCREEN + 1,
 };
 #endif /* CONFIG_HAS_EARLYSUSPEND */
 
