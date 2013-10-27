@@ -44,7 +44,7 @@ extern void hotplug_boostpulse(void);
 
 /* Default boostpulse frequency */
 #define DEFAULT_BOOSTPULSE_FREQ 1350000
-#define DEFAULT_BOOSTPULSE_DURATION 1000000
+#define DEFAULT_BOOSTPULSE_DURATION 1500000
 
 struct cpufreq_interactive_cpuinfo {
 	struct timer_list cpu_timer;
