@@ -102,7 +102,7 @@ static struct pointer_trace tr_data[MAX_TRACE];
 static int tr_last_index;
 #endif
 
-#define BOOSTED_TIME	1000	/* ms */
+#define BOOSTED_TIME	1500	/* ms */
 int mako_boosted;
 static unsigned int boosted_time = BOOSTED_TIME;
 static struct timer_list boost_timer;
