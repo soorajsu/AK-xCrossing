@@ -41,7 +41,7 @@
 #define COOL_TEMP					50
 #define COOL_TEMP_OFFSET_MS			250
 #define HOT_TEMP_OFFSET_MS			250
-#define DEFAULT_MIN_FREQ_INDEX		10
+#define DEFAULT_MIN_FREQ_INDEX		7
 
 static int enabled = true;
 static struct msm_thermal_data msm_thermal_info;
