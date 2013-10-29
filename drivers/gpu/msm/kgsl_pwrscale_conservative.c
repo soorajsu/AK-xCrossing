@@ -30,7 +30,7 @@ static unsigned int g_show_stats = 0;
 /* Polling interval in us */
 #define MIN_POLL_INTERVAL 10000
 #define MAX_POLL_INTERVAL 1000000
-static unsigned long g_polling_interval = 25000;
+static unsigned long g_polling_interval = 100000;
 
 static unsigned long walltime_total = 0;
 static unsigned long busytime_total = 0;
