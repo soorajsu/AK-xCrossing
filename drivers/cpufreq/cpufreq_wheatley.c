@@ -30,16 +30,16 @@
  * It helps to keep variable names smaller, simpler
  */
 
-#define DEF_FREQUENCY_DOWN_DIFFERENTIAL		(20)
-#define DEF_FREQUENCY_UP_THRESHOLD		(80)
+#define DEF_FREQUENCY_DOWN_DIFFERENTIAL		(10)
+#define DEF_FREQUENCY_UP_THRESHOLD		(75)
 #define DEF_SAMPLING_DOWN_FACTOR		(1)
 #define MAX_SAMPLING_DOWN_FACTOR		(100000)
 #define MICRO_FREQUENCY_DOWN_DIFFERENTIAL	(3)
-#define MICRO_FREQUENCY_UP_THRESHOLD		(95)
-#define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(10000)
+#define MICRO_FREQUENCY_UP_THRESHOLD		(85)
+#define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(20000)
 #define MIN_FREQUENCY_UP_THRESHOLD		(11)
 #define MAX_FREQUENCY_UP_THRESHOLD		(100)
-#define DEF_TARGET_RESIDENCY			(10000)
+#define DEF_TARGET_RESIDENCY			(20000)
 #define DEF_ALLOWED_MISSES			(5)
 
 /*
@@ -130,7 +130,7 @@ static struct dbs_tuners {
     .powersave_bias = 0,
     .target_residency = DEF_TARGET_RESIDENCY,
     .allowed_misses = DEF_ALLOWED_MISSES,
-	.boostfreq = 1026000,
+	.boostfreq = 1350000,
 	.io_is_busy = 1,
 };
 
