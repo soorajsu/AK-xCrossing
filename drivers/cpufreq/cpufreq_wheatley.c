@@ -132,8 +132,7 @@ static struct dbs_tuners {
     .powersave_bias = 0,
     .target_residency = DEF_TARGET_RESIDENCY,
     .allowed_misses = DEF_ALLOWED_MISSES,
-	.boostfreq = 1026000,
-	.io_is_busy = 1,
+    .boostfreq = 1512000,
 };
 
 static inline u64 get_cpu_idle_time_jiffy(unsigned int cpu,
