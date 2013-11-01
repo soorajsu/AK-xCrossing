@@ -56,6 +56,8 @@
 
 static unsigned int min_sampling_rate, num_misses;
 
+extern void hotplug_boostpulse(void);
+
 #define LATENCY_MULTIPLIER			(1000)
 #define MIN_LATENCY_MULTIPLIER			(100)
 #define TRANSITION_LATENCY_LIMIT		(10 * 1000 * 1000)
@@ -611,8 +613,10 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 
 		if (mako_boosted && policy->cpu == 0) {
 			if (dbs_tuners_ins.boostfreq &&
-					freq_next < dbs_tuners_ins.boostfreq)
+					freq_next < dbs_tuners_ins.boostfreq) {
 				freq_next = dbs_tuners_ins.boostfreq;
+				hotplug_boostpulse();
+		}
 			else
 				freq_next = policy->max;
 		}
