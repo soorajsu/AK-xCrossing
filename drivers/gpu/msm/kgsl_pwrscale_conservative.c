@@ -55,7 +55,7 @@ static struct gpu_thresh_tbl thresh_tbl[] = {
 };
 
 #define BOOSTED_POWERLEVEL 2
-static unsigned int enable_boost = 0;
+static unsigned int enable_boost = 1;
 static unsigned int boosted_pwrlevel = BOOSTED_POWERLEVEL;
 
 static void conservative_wake(struct kgsl_device *device,
