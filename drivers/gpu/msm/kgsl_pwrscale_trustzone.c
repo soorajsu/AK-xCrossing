@@ -19,8 +19,6 @@
 #include <mach/socinfo.h>
 #include <mach/scm.h>
 
-#include <linux/cpufreq.h>
-
 #include "kgsl.h"
 #include "kgsl_pwrscale.h"
 #include "kgsl_device.h"
@@ -34,12 +32,6 @@
 #ifdef CONFIG_MSM_KGSL_SIMPLE_GOV
 #define TZ_GOVERNOR_SIMPLE	2
 #endif
-
-#define BOOSTED_POWERLEVEL 2
-static unsigned int boosted_pwrlevel_trust = BOOSTED_POWERLEVEL;
-
-/* 1 = print statistics */
-static unsigned int g_show_stats = 0;
 
 struct tz_priv {
 	int governor;
@@ -129,46 +121,8 @@ static ssize_t tz_governor_store(struct kgsl_device *device,
 
 PWRSCALE_POLICY_ATTR(governor, 0644, tz_governor_show, tz_governor_store);
 
-
-static ssize_t tz_boosted_pwrlevel_trust_show(struct kgsl_device *device, struct kgsl_pwrscale
-                                                 *pwrscale, char *buf)
-{
-        return sprintf(buf, "%d\n", boosted_pwrlevel_trust);
-}
-
-static ssize_t tz_boosted_pwrlevel_trust_store(struct kgsl_device *device, struct kgsl_pwrscale
-                                                 *pwrscale, const char *buf,
-                                                 size_t count)
-{
-        unsigned long tmp;
-        int err;
-        struct kgsl_pwrctrl *pwr = &device->pwrctrl;
-
-        err = kstrtoul(buf, 0, &tmp);
-        if (err) {
-                pr_err("%s: failed setting new boosted powerlevel!\n", KGSL_NAME);
-                return err;
-        }
-
-        if (tmp < pwr->max_pwrlevel)
-                tmp = pwr->max_pwrlevel;
-        else if (tmp > pwr->min_pwrlevel)
-                tmp = pwr->min_pwrlevel;
-
-        boosted_pwrlevel_trust = tmp;
-
-        if (g_show_stats == 1)
-                pr_info("%s: new boosted powerlevel: %d\n", KGSL_NAME, boosted_pwrlevel_trust);
-
-        return count;
-}
-
-PWRSCALE_POLICY_ATTR(boosted_pwrlevel_trust, 0644, tz_boosted_pwrlevel_trust_show,
-                 tz_boosted_pwrlevel_trust_store);
-
 static struct attribute *tz_attrs[] = {
 	&policy_attr_governor.attr,
-	&policy_attr_boosted_pwrlevel_trust.attr,
 	NULL
 };
 
@@ -244,13 +198,6 @@ static void tz_idle(struct kgsl_device *device, struct kgsl_pwrscale *pwrscale)
 	   the same */
 	if (priv->governor == TZ_GOVERNOR_PERFORMANCE)
 		return;
-
-        if (mako_boosted == 1) {
-                if (boosted_pwrlevel_trust < pwr->active_pwrlevel)
-                        kgsl_pwrctrl_pwrlevel_change(device, boosted_pwrlevel_trust);
-
-                return;
-        }
 
 	device->ftbl->power_stats(device, &stats);
 	priv->bin.total_time += stats.total_time;
