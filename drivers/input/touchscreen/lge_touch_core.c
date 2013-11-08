@@ -31,7 +31,6 @@
 #include <linux/version.h>
 #include <linux/atomic.h>
 #include <linux/gpio.h>
-
 #include <linux/cpufreq.h>
 
 #include <linux/input/lge_touch_core.h>
@@ -2069,6 +2068,9 @@ static int touch_probe(struct i2c_client *client,
 		ts->accuracy_filter.time_to_max_pressure = one_sec / 20;
 		ts->accuracy_filter.direction_count = one_sec / 6;
 		ts->accuracy_filter.touch_max_count = one_sec / 2;
+	}
+
+	setup_timer(&boost_timer, handle_boost, 0);
 
 #if defined(CONFIG_HAS_EARLYSUSPEND)
 	ts->early_suspend.level = EARLY_SUSPEND_LEVEL_BLANK_SCREEN + 1;
@@ -2281,7 +2283,7 @@ int touch_driver_register(struct touch_device_driver* driver)
 
 	touch_device_func = driver;
 
-	touch_wq = create_workqueue("touch_wq");
+	touch_wq = create_singlethread_workqueue("touch_wq");
 	if (!touch_wq) {
 		TOUCH_ERR_MSG("CANNOT create new workqueue\n");
 		ret = -ENOMEM;
