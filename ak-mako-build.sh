@@ -10,7 +10,7 @@ clear
 
 # AK Kernel Version
 BASE_AK_VER="AK"
-VER=".118.CM11"
+VER=".119.CM11"
 AK_VER=$BASE_AK_VER$VER
 
 # AK Variables
