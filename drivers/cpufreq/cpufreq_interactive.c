@@ -126,19 +126,6 @@ static int timer_slack_val = DEFAULT_TIMER_SLACK;
 
 static bool io_is_busy = true;
 
-#define  AID_SYSTEM  (1000)
-static void dbs_chown(void)
-{
-  int ret;
-
-  ret =
-  sys_chown("/sys/devices/system/cpu/cpufreq/interactive/boostpulse",
-    low2highuid(AID_SYSTEM), low2highgid(0));
-  if (ret)
-    pr_err("sys_chown: boostpulse error: %d", ret);
-}
-
-
 static inline cputime64_t get_cpu_idle_time_jiffy(unsigned int cpu,
 						  cputime64_t *wall)
 {
@@ -1094,8 +1081,6 @@ static int cpufreq_governor_interactive(struct cpufreq_policy *policy,
 	switch (event) {
 	case CPUFREQ_GOV_START:
 		mutex_lock(&gov_lock);
-
-		dbs_chown();
 
 		freq_table =
 			cpufreq_frequency_get_table(policy->cpu);
